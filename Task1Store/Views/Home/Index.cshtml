@@ -1,0 +1,37 @@
+﻿@model Task1Store.Models.Customer
+@{
+    ViewBag.Title = "Index";
+    
+}
+<script src="../../Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function Customer()
+    {
+        var self = this;
+        self.Id = $("#Id").val();
+        self.Name = $("#Name").val();
+        self.Born = $("#Born").val();
+        self.City = $("#City").val();
+        self.Country = $("#Country").val();
+
+
+    }
+    var cust = new Customer();
+    $.ajax({
+        url: "Index/PostCustomerView",
+        dataType: "json",
+        contentType: "application/json",
+        type: "POST",
+        data: JSON.stringify(cust),
+        success: function (response) {
+            ("#result").text(response.result)
+        }
+
+
+    });
+    
+</script>
+
+
+<h2>Index</h2>
+
